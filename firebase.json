@@ -1,0 +1,8 @@
+{
+  "functions": {
+    "source": "server/dist"
+  },
+  "hosting": {
+    "public": "client/dist"
+  }
+}

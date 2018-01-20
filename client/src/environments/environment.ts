@@ -5,6 +5,12 @@
 
 export const environment = {
   production: false,
-  ghAuthToken: "96fe7f207a604d0847ea6cdab0029e9b26d404b9" //ngdashboard token with public-only and read-only permissions
-              //"9eb2fc92bdc3a07a69bd21b42bb2a1c006ebc0f7"
+  firebase: {
+    apiKey: "AIzaSyC9fz2hBWJpVwLyiFEKkQD-Dti4QLg6cC4",
+    authDomain: "angular-hq.firebaseapp.com",
+    databaseURL: "https://angular-hq.firebaseio.com",
+    projectId: "angular-hq",
+    storageBucket: "angular-hq.appspot.com",
+    messagingSenderId: "480791376247"
+  }
 };

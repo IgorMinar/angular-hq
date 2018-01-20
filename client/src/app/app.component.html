@@ -1,0 +1,55 @@
+<div *ngIf="(prioritizedIssues | async) as prioritizedIssues; else loadingIssue">
+
+  <select [formControl]="componentFilterControl">
+    <option value="">all components</option>
+    <option *ngFor="let componentName of componentNames | async">{{componentName}}</option>
+  </select>
+
+  <select [formControl]="issuePrFilterControl">
+    <option value="">issues & PRs</option>
+    <option value="issue">issues</option>
+    <option value="pr">PRs</option>
+  </select>
+
+  <select [formControl]="issueTypeFilterControl">
+    <option value="">bug & feat & ...</option>
+    <option value="bug">bug</option>
+    <option value="feature">feature</option>
+    <option value="docs">docs</option>
+    <option value="refactor">refactor</option>
+    <option value="RFC / question / discussion">RFC / question / discussion</option>
+  </select>
+
+  <span>Total Count: {{prioritizedIssues.length}}</span>
+
+  <hr>
+
+  <table>
+    <tr>
+      <th>Priority Score</th>
+      <th>GH Issue</th>
+      <th>Issue Title</th>
+      <th>Age</th>
+      <th>Comments</th>
+      <th>Assignee</th>
+      <th>Issue Milestone & Labels</th>
+    </tr>
+    <tr *ngFor="let issue of prioritizedIssues">
+      <td>{{issue.priorityScore}}</td>
+      <td>{{issue.type === 'pr' ? 'PR#': ''}}{{issue.number}}</td>
+      <td class="title"><a [href]="issue.url">{{issue.title}}</a></td>
+      <td>{{issue.age}}d</td>
+      <td>{{issue.commentsCount}}</td>
+      <td>
+        <img *ngFor="let assignee of issue.assignees" [src]="assignee.avatarUrl" [title]="assignee.userName" height="25px">
+      </td>
+      <td class="labels">
+        <b>{{issue.milestoneTitle}}</b>
+        {{issue.labels.join(', ')}}
+      </td>
+    </tr>
+  </table>
+</div>
+<ng-template #loadingIssue>
+  Loading data...
+</ng-template>

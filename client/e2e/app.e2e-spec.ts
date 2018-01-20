@@ -1,6 +1,6 @@
 import { AppPage } from './app.po';
 
-describe('ng-health App', () => {
+describe('ng-hq-client App', () => {
   let page: AppPage;
 
   beforeEach(() => {
